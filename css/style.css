@@ -53,6 +53,12 @@ main{
     background-color: #1389b2;
 }
 
+.bomb{
+    background-color: red;
+    font-weight: bold;
+    color:white;
+}
+
 .active{
     background-color: #0cd6a1;
     font-weight: bold;
