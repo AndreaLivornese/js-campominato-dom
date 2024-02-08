@@ -12,6 +12,9 @@ document.querySelector("#btn-play").addEventListener("click",
 
         gridEl.innerHTML= "";
 
+        const positionBombs = randomArrayNumbers();
+        console.log(positionBombs);
+
         const difficultyChoice = Number(document.querySelector("#difficulty").value);
 
         if(difficultyChoice == 10){
@@ -33,8 +36,20 @@ document.querySelector("#btn-play").addEventListener("click",
 
             newDivEl.addEventListener("click",
                 function(){
-                    this.classList.toggle("active");
-                    console.log(this.innerText);
+
+
+                    // controlla se la calella cliccata è una bommba o meno
+                    if( positionBombs.includes( Number(this.innerText) ) ){
+
+                        // vero: aggiunge la classe della bomba
+                        this.classList.add("bomb");
+                    }else{
+
+                        // altrimenti aggiungi la classe active
+                        this.classList.add("active");
+                        console.log(this.innerText);
+                    }
+
 
                 }
 
@@ -58,7 +73,7 @@ function randomArrayNumbers(){
     // ciclo che va fin quando la lunghezza dell'arrray arriverà a 16
     while(array.length != 16){
 
-        
+        // genera un numero da 1 a 100
         let num = Math.floor(Math.random() * 100 +1);
 
         // controlla se il numero generato non è presente nell'array
@@ -73,5 +88,3 @@ function randomArrayNumbers(){
 
 
 }
-
-console.log(randomArrayNumbers());
