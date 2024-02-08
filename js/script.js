@@ -7,6 +7,8 @@ const medium = 81;
 const easy = 49;
 let range = 0;
 
+count=0;
+
 document.querySelector("#btn-play").addEventListener("click",
     function(){
 
@@ -37,21 +39,23 @@ document.querySelector("#btn-play").addEventListener("click",
             newDivEl.addEventListener("click",
                 function(){
 
-
                     // controlla se la calella cliccata è una bommba o meno
                     if( positionBombs.includes( Number(this.innerText) ) ){
 
                         // vero: aggiunge la classe della bomba
                         this.classList.add("bomb");
-                        console.log("Bomb!");
+                        console.log("Bomb! Hai perso");
                     }else{
-
+                        count++;
                         // altrimenti aggiungi la classe active
                         this.classList.add("active");
                         console.log(this.innerText);
                     }
 
-
+                    this.style.pointerEvents="none";
+                    if(count == range - 16){
+                        console.log("hai vinto");
+                    }
                 }
 
 
