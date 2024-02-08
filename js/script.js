@@ -12,11 +12,9 @@ document.querySelector("#btn-play").addEventListener("click",
 
         gridEl.innerHTML= "";
 
-        const positionBombs = randomArrayNumbers();
-        console.log(positionBombs);
-
+        
         const difficultyChoice = Number(document.querySelector("#difficulty").value);
-
+        
         if(difficultyChoice == 10){
             range = hard;
         }else if(difficultyChoice == 9){
@@ -24,8 +22,10 @@ document.querySelector("#btn-play").addEventListener("click",
         }else{
             range = easy;
         }
-
-
+        
+        const positionBombs = randomArrayNumbers(range);
+        console.log(positionBombs);
+        
 
         for(let i=1; i<=range; i++){
             const newDivEl= document.createElement("div");
@@ -43,6 +43,7 @@ document.querySelector("#btn-play").addEventListener("click",
 
                         // vero: aggiunge la classe della bomba
                         this.classList.add("bomb");
+                        console.log("Bomb!");
                     }else{
 
                         // altrimenti aggiungi la classe active
@@ -66,7 +67,7 @@ document.querySelector("#btn-play").addEventListener("click",
 
 
 
-function randomArrayNumbers(){
+function randomArrayNumbers(difficulty){
 
     const array=[];
 
@@ -74,7 +75,7 @@ function randomArrayNumbers(){
     while(array.length != 16){
 
         // genera un numero da 1 a 100
-        let num = Math.floor(Math.random() * 100 +1);
+        let num = Math.floor(Math.random() * difficulty +1);
 
         // controlla se il numero generato non è presente nell'array
         if(!array.includes(num)){
