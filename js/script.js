@@ -45,6 +45,7 @@ document.querySelector("#btn-play").addEventListener("click",
                         // vero: aggiunge la classe della bomba
                         this.classList.add("bomb");
                         console.log("Bomb! Hai perso");
+                        disabledAll(".square");
                     }else{
                         count++;
                         // altrimenti aggiungi la classe active
@@ -91,5 +92,17 @@ function randomArrayNumbers(difficulty){
     // restituisce l'array di numeri
     return array;
 
+
+}
+
+
+
+function disabledAll(elements){
+
+    const array = document.querySelectorAll(elements);
+
+    for(let i=0; i<array.length; i++){
+        array[i].style.pointerEvents="none";
+    }
 
 }
