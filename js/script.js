@@ -46,6 +46,7 @@ document.querySelector("#btn-play").addEventListener("click",
                         this.classList.add("bomb");
                         console.log("Bomb! Hai perso");
                         disabledAll(".square");
+                        showBombs(positionBombs, ".square");
                     }else{
                         count++;
                         // altrimenti aggiungi la classe active
@@ -101,8 +102,30 @@ function disabledAll(elements){
 
     const array = document.querySelectorAll(elements);
 
+    // cicla per tutto l'array deglie elementi
     for(let i=0; i<array.length; i++){
+
+        // disabilita qualsiasi tipo di interazione con il puntatore
         array[i].style.pointerEvents="none";
     }
 
+}
+
+
+function showBombs(array, elements){
+
+    const arrayEl = document.querySelectorAll(elements);
+
+    // cicla per tutta la grandezza dell'array degli elementi
+    for(let i=0; i<arrayEl.length; i++){
+        console.log(arrayEl[i].innerText);
+        
+        // controlla se il contenuto dell'elemento è contenuto nell'array delle bombe
+        if(array.includes( Number( arrayEl[i].innerText ) )){
+
+            // aggiunge la classe bomb all'elemento
+            arrayEl[i].classList.add("bomb");
+        }
+
+    }
 }
