@@ -13,7 +13,8 @@ header{
 
 
 main{
-    
+    position: relative;
+
     height: calc(100vh - 100px - 100px);  /*altezza viewport - altezza header - altezza footer*/
 
     overflow: auto;
@@ -32,6 +33,27 @@ main{
     padding: 20px;
 
     height: inherit;
+}
+
+#result-screen{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left:0;
+    right: 0;
+
+    width: 100%;
+    height: inherit;
+
+
+    color:white;
+    font-size: 50px;
+    text-transform: uppercase;
+    text-align: center;
+
+    background-color: rgba(0, 0, 0, .7);
+
 }
 
 #grid{

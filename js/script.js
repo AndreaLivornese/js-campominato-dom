@@ -5,14 +5,17 @@ const gridEl = document.querySelector("#grid");
 const hard = 100;
 const medium = 81;
 const easy = 49;
-let range = 0;
 
 count=0;
 
 document.querySelector("#btn-play").addEventListener("click",
     function(){
-
+        let range = 0;
+        
         gridEl.innerHTML= "";
+        const resultScreen = document.querySelector("#result-screen");
+
+        resultScreen.style.setProperty("display", "none");
 
         
         const difficultyChoice = Number(document.querySelector("#difficulty").value);
@@ -47,6 +50,11 @@ document.querySelector("#btn-play").addEventListener("click",
                         console.log("Bomb! Hai perso");
                         disabledAll(".square");
                         showBombs(positionBombs, ".square");
+
+                        // stampa del messaggio a schermo
+                        resultScreen.innerHTML = "Hai perso! <br> click play e riprova"
+                        resultScreen.style.setProperty("display", "flex");
+                        
                     }else{
                         count++;
                         // altrimenti aggiungi la classe active
@@ -57,6 +65,10 @@ document.querySelector("#btn-play").addEventListener("click",
                     this.style.pointerEvents="none";
                     if(count == range - 16){
                         console.log("hai vinto");
+                        
+                        // stampa del messaggio a schermo
+                        resultScreen.innerHTML = "Hai vinto!"
+                        resultScreen.style.setProperty("display", "flex");
                     }
                 }
 
@@ -118,7 +130,6 @@ function showBombs(array, elements){
 
     // cicla per tutta la grandezza dell'array degli elementi
     for(let i=0; i<arrayEl.length; i++){
-        console.log(arrayEl[i].innerText);
         
         // controlla se il contenuto dell'elemento è contenuto nell'array delle bombe
         if(array.includes( Number( arrayEl[i].innerText ) )){
