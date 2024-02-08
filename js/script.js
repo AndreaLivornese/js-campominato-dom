@@ -48,3 +48,30 @@ document.querySelector("#btn-play").addEventListener("click",
     }
 
 );
+
+
+
+function randomArrayNumbers(){
+
+    const array=[];
+
+    // ciclo che va fin quando la lunghezza dell'arrray arriverà a 16
+    while(array.length != 16){
+
+        
+        let num = Math.floor(Math.random() * 100 +1);
+
+        // controlla se il numero generato non è presente nell'array
+        if(!array.includes(num)){
+            array.push(num);  
+        }
+
+    }
+
+    // restituisce l'array di numeri
+    return array;
+
+
+}
+
+console.log(randomArrayNumbers());
